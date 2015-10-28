@@ -6,7 +6,7 @@
 
 namespace SprykerFeature\Zed\Url\Persistence\Propel;
 
-use SprykerFeature\Zed\Url\Persistence\Propel\Base\SpyUrlQuery as BaseSpyUrlQuery;
+use Orm\Zed\Url\Persistence\Base\SpyUrlQuery as BaseSpyUrlQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_url' table.
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Url\Persistence\Propel\Base\SpyUrlQuery as BaseSpyUrlQuer
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyUrlQuery extends BaseSpyUrlQuery
+abstract class AbstractSpyUrlQuery extends BaseSpyUrlQuery
 {
 
 } // SpyUrlQuery
