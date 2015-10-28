@@ -6,7 +6,7 @@
 
 namespace SprykerFeature\Zed\Url\Persistence\Propel;
 
-use SprykerFeature\Zed\Url\Persistence\Propel\Base\SpyRedirect as BaseSpyRedirect;
+use Orm\Zed\Url\Persistence\Base\SpyRedirect as BaseSpyRedirect;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_redirect' table.
@@ -17,7 +17,7 @@ use SprykerFeature\Zed\Url\Persistence\Propel\Base\SpyRedirect as BaseSpyRedirec
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyRedirect extends BaseSpyRedirect
+abstract class AbstractSpyRedirect extends BaseSpyRedirect
 {
 
 }
