@@ -15,7 +15,7 @@ use Spryker\Zed\Url\Persistence\UrlQueryContainerInterface;
 /**
  * @method UrlQueryContainerInterface getQueryContainer()
  */
-class UrlDependencyContainer extends AbstractCommunicationFactory
+class UrlCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**

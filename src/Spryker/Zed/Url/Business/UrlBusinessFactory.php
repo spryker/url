@@ -13,7 +13,7 @@ use Spryker\Zed\Url\UrlDependencyProvider;
 /**
  * @method UrlQueryContainerInterface getQueryContainer()
  */
-class UrlDependencyContainer extends AbstractBusinessFactory
+class UrlBusinessFactory extends AbstractBusinessFactory
 {
 
     /**
