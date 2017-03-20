@@ -14,13 +14,13 @@ interface UrlCreatePluginInterface
 
     /**
      * Specification:
-     * TODO: add specification
+     * - This plugin is executed before and/or after new URL entity creation, depending for which event was it provided.
      *
      * @api
      *
      * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
      *
-     * @return mixed
+     * @return void
      */
     public function create(UrlTransfer $urlTransfer);
 
