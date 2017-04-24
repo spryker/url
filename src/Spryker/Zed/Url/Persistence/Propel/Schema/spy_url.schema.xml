@@ -18,6 +18,7 @@
 
         <unique name="spy_url_unique_key">
             <unique-column name="url"/>
+            <unique-column name="fk_locale"/>
         </unique>
 
         <id-method-parameter value="spy_url_pk_seq"/>
