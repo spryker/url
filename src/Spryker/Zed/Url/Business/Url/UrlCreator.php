@@ -115,7 +115,9 @@ class UrlCreator extends AbstractUrlCreatorSubject implements UrlCreatorInterfac
         $urlTransfer->requireUrl();
         $urlEntity = $this->urlQueryContainer->queryUrl($urlTransfer->getUrl())->findOneOrCreate();
 
+        $id = $urlEntity->getIdUrl();
         $urlEntity->fromArray($urlTransfer->modifiedToArray());
+        $urlEntity->setIdUrl($id);
         $urlEntity->save();
 
         $urlTransfer->fromArray($urlEntity->toArray(), true);
