@@ -4,3 +4,7 @@ parameters:
         - '#Method .+Observers\(\) should return .+SaveObserverInterface\>#'
         -
             identifier: missingType.iterableValue
+        -
+            identifier: method.childParameterType
+        -
+            identifier: method.childReturnType
