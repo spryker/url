@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Shared\Url\Url;
+namespace SprykerTest\Shared\Url;
 
 use Codeception\Test\Unit;
 use Spryker\Service\UtilText\Model\Url\Url;
@@ -15,7 +15,6 @@ use Spryker\Service\UtilText\Model\Url\Url;
  *
  * @group SprykerTest
  * @group Shared
- * @group Url
  * @group Url
  * @group UrlTest
  * Add your own group annotations below this line
