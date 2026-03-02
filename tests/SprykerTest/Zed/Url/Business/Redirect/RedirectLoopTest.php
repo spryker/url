@@ -35,9 +35,6 @@ class RedirectLoopTest extends Unit
      */
     protected $urlFacade;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -45,9 +42,6 @@ class RedirectLoopTest extends Unit
         $this->urlFacade = new UrlFacade();
     }
 
-    /**
-     * @return void
-     */
     public function testCreatingCyclicRedirectsThrowsException(): void
     {
         $this->expectException(RedirectLoopException::class);
@@ -67,9 +61,6 @@ class RedirectLoopTest extends Unit
         $this->urlFacade->createUrlRedirect($urlRedirectTransfer);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function prepareTestData(): LocaleTransfer
     {
         $localeEntity = $this->createLocaleEntity();
@@ -81,9 +72,6 @@ class RedirectLoopTest extends Unit
         return $localeTransfer;
     }
 
-    /**
-     * @return \Orm\Zed\Locale\Persistence\SpyLocale
-     */
     protected function createLocaleEntity(): SpyLocale
     {
         $localeEntity = new SpyLocale();
@@ -94,13 +82,6 @@ class RedirectLoopTest extends Unit
         return $localeEntity;
     }
 
-    /**
-     * @param string $source
-     * @param string $target
-     * @param \Orm\Zed\Locale\Persistence\SpyLocale $localeEntity
-     *
-     * @return \Orm\Zed\Url\Persistence\SpyUrl
-     */
     protected function createUrlRedirectEntity(string $source, string $target, SpyLocale $localeEntity): SpyUrl
     {
         $redirectEntity = new SpyUrlRedirect();
@@ -118,12 +99,6 @@ class RedirectLoopTest extends Unit
         return $urlEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Locale\Persistence\SpyLocale $localeEntity
-     * @param string $url
-     *
-     * @return \Orm\Zed\Url\Persistence\SpyUrl
-     */
     protected function createUrlEntity(SpyLocale $localeEntity, string $url): SpyUrl
     {
         $urlEntity = new SpyUrl();
@@ -135,11 +110,6 @@ class RedirectLoopTest extends Unit
         return $urlEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Url\Persistence\SpyUrl $urlEntity
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function mapEntityToTransfer(SpyUrl $urlEntity): UrlTransfer
     {
         $urlTransfer = new UrlTransfer();

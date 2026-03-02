@@ -66,9 +66,6 @@ class UrlFacadeTest extends Unit
      */
     protected $localeFacade;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -79,9 +76,6 @@ class UrlFacadeTest extends Unit
         $this->touchQueryContainer = new TouchQueryContainer();
     }
 
-    /**
-     * @return void
-     */
     public function testCreateUrlPersistsNewEntityToDatabase(): void
     {
         $urlQuery = $this->urlQueryContainer->queryUrls();
@@ -108,9 +102,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have active touch entry after creation.');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateUrlPersistsChangedToDatabase(): void
     {
         $localeTransfer1 = $this->localeFacade->createLocale('ab_CD');
@@ -140,9 +131,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'Url entity should have active touch entry after update.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindUrlEntityByUrl(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -161,9 +149,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame($urlEntity->getIdUrl(), $urlTransfer->getIdUrl(), 'Reading URL entity by path should return transfer with proper data.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindUrlEntityById(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -182,9 +167,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame($urlEntity->getUrl(), $urlTransfer->getUrl(), 'Reading URL entity by ID should return transfer with proper data.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindUrlCaseInsensitiveShouldSearchByIdAndReturnCorrectUrlTransfer(): void
     {
         // Assign
@@ -199,9 +181,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame($urlTransfer->getUrl(), $existingUrlTransfer->getUrl());
     }
 
-    /**
-     * @return void
-     */
     public function testFindUrlCaseInsensitiveShouldSearchByCaseInsensitiveUrlValueAndReturnCorrectUrlTransfer(): void
     {
         // Assign
@@ -217,9 +196,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame($urlTransfer->getIdUrl(), $existingUrlTransfer->getIdUrl());
     }
 
-    /**
-     * @return void
-     */
     public function testFindUrlCaseInsensitiveWillThrowInvalidArgumentExceptionIfIdUrlOrUrlValueIsNotSet(): void
     {
         // Assign
@@ -232,9 +208,6 @@ class UrlFacadeTest extends Unit
         $this->urlFacade->findUrlCaseInsensitive($urlTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlEntityByUrl(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -252,9 +225,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrl, 'Checking if URL entity exists by path should return true.');
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlCaseInsensitiveShouldReturnTrueIfUrlExists(): void
     {
         // Assign
@@ -272,9 +242,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrlCaseInsensitive);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlCaseInsensitiveShouldReturnFalseIfUrlDoesNotExist(): void
     {
         // Assign
@@ -290,9 +257,6 @@ class UrlFacadeTest extends Unit
         $this->assertFalse($hasUrlCaseInsensitive);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlCaseInsensitiveShouldReturnFalseIfUrlDoesNotExistButUrlRedirectExists(): void
     {
         // Assign
@@ -310,9 +274,6 @@ class UrlFacadeTest extends Unit
         $this->assertFalse($hasUrlCaseInsensitive);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlCaseInsensitiveWillThrowInvalidArgumentExceptionIfIdUrlOrUrlValueIsNotSet(): void
     {
         // Assign
@@ -325,9 +286,6 @@ class UrlFacadeTest extends Unit
         $this->urlFacade->hasUrl($urlTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlIgnoresRedirectedUrls(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -351,9 +309,6 @@ class UrlFacadeTest extends Unit
         $this->assertFalse($hasUrl, 'Checking if URL redirect entity exists should get ignored.');
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlOrRedirectedUrlCaseInsensitiveShouldReturnTrueIfUrlExistsAndUrlRedirectDoesNot(): void
     {
         // Assign
@@ -371,9 +326,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrlOrRedirectedUrlCaseInsensitive);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlOrRedirectedUrlCaseInsensitiveShouldReturnTrueIfUrlRedirectExistsAndUrlDoesNot(): void
     {
         // Assign
@@ -391,9 +343,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrlOrRedirectedUrlCaseInsensitive);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlOrRedirectedUrlCaseInsensitiveShouldReturnFalseIfUrlAndUrlRedirectDoNotExist(): void
     {
         // Assign
@@ -407,9 +356,6 @@ class UrlFacadeTest extends Unit
         $this->assertFalse($hasUrlOrRedirectedUrlCaseInsensitive);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlOrRedirectedUrlCaseInsensitiveWillThrowInvalidArgumentExceptionIfIdUrlOrUrlValueIsNotSet(): void
     {
         // Assign
@@ -422,9 +368,6 @@ class UrlFacadeTest extends Unit
         $this->urlFacade->hasUrlOrRedirectedUrlCaseInsensitive($urlTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlEntityById(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -442,9 +385,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrl, 'Checking if URL entity exists by ID should return true.');
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlOrRedirectedUrlById(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -468,9 +408,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrl, 'Checking if URL redirect entity exists by ID should return true.');
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteUrlShouldRemoveEntityFromDatabase(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -496,9 +433,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'Entity should have deleted touch entry before deletion.');
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteUrlShouldRemoveRelatedUrlRedirectEntitiesFromDatabase(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -549,9 +483,6 @@ class UrlFacadeTest extends Unit
         $this->assertFalse($this->urlFacade->hasUrlRedirect($urlRedirectTransfer2), 'URL redirect entity 2/2 should not exist after deleting its target url entity.');
     }
 
-    /**
-     * @return void
-     */
     public function testActivateUrlShouldCreateActiveTouchEntry(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -571,9 +502,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have active touch entry after activation.');
     }
 
-    /**
-     * @return void
-     */
     public function testDeactivateUrlShouldCreateDeletedTouchEntry(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -593,9 +521,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have deleted touch entry after activation.');
     }
 
-    /**
-     * @return void
-     */
     public function testCreateUrlRedirectEntityPersistsToDatabase(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -617,9 +542,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have active touch entry after creation.');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateUrlRedirectEntityPersistsToDatabase(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -657,9 +579,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have active touch entry after update.');
     }
 
-    /**
-     * @return void
-     */
     public function testFindUrlRedirectEntityById(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -685,9 +604,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame($urlRedirectEntity->getToUrl(), $urlRedirectTransfer->getToUrl(), 'Reading URL redirect entity by ID should return transfer with proper data.');
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlRedirectEntityById(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -712,9 +628,6 @@ class UrlFacadeTest extends Unit
         $this->assertTrue($hasUrlRedirect, 'Checking if URL redirect entity exists by ID should return true.');
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteUrlRedirectShouldRemoveEntityFromDatabaseAlongWithUrlEntity(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -760,9 +673,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $urlTouchQuery->count(), 'URL entity should have deleted touch entry after deletion.');
     }
 
-    /**
-     * @return void
-     */
     public function testActivateUrlRedirectShouldCreateActiveTouchEntry(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -789,9 +699,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have active touch entry after activation.');
     }
 
-    /**
-     * @return void
-     */
     public function testDeactivateUrlRedirectShouldCreateDeletedTouchEntry(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');
@@ -818,9 +725,6 @@ class UrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count(), 'New entity should have deleted touch entry after activation.');
     }
 
-    /**
-     * @return void
-     */
     public function testValidateUrlRedirectShouldNoticeRedirectLoop(): void
     {
         $localeTransfer = $this->localeFacade->createLocale('ab_CD');

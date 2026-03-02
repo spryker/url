@@ -29,10 +29,6 @@ class UrlRedirectAppendObserver implements UrlCreatorAfterSaveObserverInterface,
      */
     protected $urlRedirectActivator;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     * @param \Spryker\Zed\Url\Business\Redirect\UrlRedirectActivatorInterface $urlRedirectActivator
-     */
     public function __construct(UrlQueryContainerInterface $urlQueryContainer, UrlRedirectActivatorInterface $urlRedirectActivator)
     {
         $this->urlQueryContainer = $urlQueryContainer;

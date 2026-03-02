@@ -20,9 +20,6 @@ class UrlHelper extends Module
 {
     use LocatorHelperTrait;
 
-    /**
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     public function haveUrl(): UrlTransfer
     {
         $urlFacade = $this->getUrlFacade();
@@ -37,9 +34,6 @@ class UrlHelper extends Module
         return $urlFacade->createUrl($urlTransfer);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UrlRedirectTransfer
-     */
     public function haveUrlRedirect(): UrlRedirectTransfer
     {
         $urlFacade = $this->getUrlFacade();
@@ -52,25 +46,16 @@ class UrlHelper extends Module
         return $urlFacade->createUrlRedirect($urlRedirectTransfer);
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Business\UrlFacadeInterface
-     */
     protected function getUrlFacade(): UrlFacadeInterface
     {
         return $this->getLocator()->url()->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     protected function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getLocator()->locale()->facade();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function createUrlTransfer(): UrlTransfer
     {
         $locale = $this->getLocaleFacade()->getCurrentLocale();

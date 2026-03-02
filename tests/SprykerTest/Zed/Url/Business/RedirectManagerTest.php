@@ -30,9 +30,6 @@ use Spryker\Zed\Url\Persistence\UrlQueryContainer;
  */
 class RedirectManagerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testDeleteUrlRedirectMustThrowExceptionIfUrlRedirectNotFound(): void
     {
         $this->expectException(MissingRedirectException::class);
@@ -50,9 +47,6 @@ class RedirectManagerTest extends Unit
         $redirectedManager->deleteUrlRedirect(new RedirectTransfer());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteUrlRedirect(): void
     {
         $entityMock = $this->getMockBuilder(SpyUrlRedirect::class)->onlyMethods(['delete'])->getMock();

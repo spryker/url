@@ -20,9 +20,6 @@ class UrlUpdateObserver implements UrlUpdaterAfterSaveObserverInterface
      */
     protected $urlRedirectCreator;
 
-    /**
-     * @param \Spryker\Zed\Url\Business\Redirect\UrlRedirectCreatorInterface $urlRedirectWriter
-     */
     public function __construct(UrlRedirectCreatorInterface $urlRedirectWriter)
     {
         $this->urlRedirectCreator = $urlRedirectWriter;

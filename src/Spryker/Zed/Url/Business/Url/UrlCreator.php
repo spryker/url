@@ -31,11 +31,6 @@ class UrlCreator extends AbstractUrlCreatorSubject implements UrlCreatorInterfac
      */
     protected $urlActivator;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     * @param \Spryker\Zed\Url\Business\Url\UrlReaderInterface $urlReader
-     * @param \Spryker\Zed\Url\Business\Url\UrlActivatorInterface $urlActivator
-     */
     public function __construct(UrlQueryContainerInterface $urlQueryContainer, UrlReaderInterface $urlReader, UrlActivatorInterface $urlActivator)
     {
         $this->urlQueryContainer = $urlQueryContainer;
@@ -57,11 +52,6 @@ class UrlCreator extends AbstractUrlCreatorSubject implements UrlCreatorInterfac
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function executeCreateUrlTransaction(UrlTransfer $urlTransfer): UrlTransfer
     {
         $this->notifyBeforeSaveObservers($urlTransfer);

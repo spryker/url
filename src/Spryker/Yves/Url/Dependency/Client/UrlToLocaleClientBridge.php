@@ -22,9 +22,6 @@ class UrlToLocaleClientBridge implements UrlToLocaleClientInterface
         $this->localeClient = $localeClient;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLanguage(): string
     {
         return $this->localeClient->getCurrentLanguage();

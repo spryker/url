@@ -32,11 +32,6 @@ class UrlRedirectCreator implements UrlRedirectCreatorInterface
      */
     protected $urlRedirectActivator;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     * @param \Spryker\Zed\Url\Business\Url\UrlCreatorInterface $urlCreator
-     * @param \Spryker\Zed\Url\Business\Redirect\UrlRedirectActivatorInterface $urlRedirectActivator
-     */
     public function __construct(
         UrlQueryContainerInterface $urlQueryContainer,
         UrlCreatorInterface $urlCreator,
@@ -61,11 +56,6 @@ class UrlRedirectCreator implements UrlRedirectCreatorInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlRedirectTransfer $urlRedirectTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlRedirectTransfer
-     */
     protected function executeCreateUrlTransaction(UrlRedirectTransfer $urlRedirectTransfer): UrlRedirectTransfer
     {
         $urlRedirectTransfer = $this->persistUrlRedirectEntity($urlRedirectTransfer);

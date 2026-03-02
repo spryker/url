@@ -22,11 +22,6 @@ class UrlDataHelper extends Module
     use DataCleanupHelperTrait;
     use LocatorHelperTrait;
 
-    /**
-     * @param array $urlOverride
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     public function haveUrl(array $urlOverride = []): UrlTransfer
     {
         $urlTransfer = $this->buildUrl($urlOverride);
@@ -45,12 +40,6 @@ class UrlDataHelper extends Module
         return $urlTransfer;
     }
 
-    /**
-     * @param array $urlRedirectOverride
-     * @param array $urlOverride
-     *
-     * @return \Generated\Shared\Transfer\UrlRedirectTransfer
-     */
     public function haveUrlRedirect(array $urlRedirectOverride = [], array $urlOverride = []): UrlRedirectTransfer
     {
         $urlRedirectTransfer = (new UrlRedirectBuilder())
@@ -77,11 +66,6 @@ class UrlDataHelper extends Module
         return $urlRedirectTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return void
-     */
     protected function cleanupUrl(UrlTransfer $urlTransfer): void
     {
         $this->debug(sprintf('Deleting URL: %d', $urlTransfer->getIdUrl()));
@@ -89,11 +73,6 @@ class UrlDataHelper extends Module
         $this->getUrlFacade()->deleteUrl($urlTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlRedirectTransfer $urlRedirectTransfer
-     *
-     * @return void
-     */
     protected function cleanupUrlRedirect(UrlRedirectTransfer $urlRedirectTransfer): void
     {
         $this->debug(sprintf('Deleting URL Redirect: %d', $urlRedirectTransfer->getIdUrlRedirect()));
@@ -101,11 +80,6 @@ class UrlDataHelper extends Module
         $this->getUrlFacade()->deleteUrlRedirect($urlRedirectTransfer);
     }
 
-    /**
-     * @param array $urlOverride
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function buildUrl(array $urlOverride = []): UrlTransfer
     {
         $urlTransfer = (new UrlBuilder())
@@ -125,17 +99,11 @@ class UrlDataHelper extends Module
         return $urlTransfer;
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Business\UrlFacadeInterface
-     */
     protected function getUrlFacade(): UrlFacadeInterface
     {
         return $this->getLocator()->url()->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     protected function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getLocator()->locale()->facade();

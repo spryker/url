@@ -34,11 +34,6 @@ class UrlUpdater extends AbstractUrlUpdaterSubject implements UrlUpdaterInterfac
      */
     protected $urlActivator;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     * @param \Spryker\Zed\Url\Business\Url\UrlReaderInterface $urlReader
-     * @param \Spryker\Zed\Url\Business\Url\UrlActivatorInterface $urlActivator
-     */
     public function __construct(UrlQueryContainerInterface $urlQueryContainer, UrlReaderInterface $urlReader, UrlActivatorInterface $urlActivator)
     {
         $this->urlQueryContainer = $urlQueryContainer;
@@ -70,11 +65,6 @@ class UrlUpdater extends AbstractUrlUpdaterSubject implements UrlUpdaterInterfac
         $urlTransfer->requireIdUrl();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function executeUpdateUrlTransaction(UrlTransfer $urlTransfer): UrlTransfer
     {
         $urlEntity = $this->getUrlById($urlTransfer->getIdUrl());

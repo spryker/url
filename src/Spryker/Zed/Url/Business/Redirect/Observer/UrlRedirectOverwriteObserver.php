@@ -27,10 +27,6 @@ class UrlRedirectOverwriteObserver implements UrlCreatorBeforeSaveObserverInterf
      */
     protected $urlDeleter;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     * @param \Spryker\Zed\Url\Business\Deletion\UrlDeleterInterface $urlDeleter
-     */
     public function __construct(UrlQueryContainerInterface $urlQueryContainer, UrlDeleterInterface $urlDeleter)
     {
         $this->urlQueryContainer = $urlQueryContainer;
@@ -106,11 +102,6 @@ class UrlRedirectOverwriteObserver implements UrlCreatorBeforeSaveObserverInterf
         $this->urlDeleter->deleteUrlRedirect($urlRedirectTransfer);
     }
 
-    /**
-     * @param \Orm\Zed\Url\Persistence\SpyUrlRedirect $urlRedirectEntity
-     *
-     * @return \Orm\Zed\Url\Persistence\SpyUrlRedirect
-     */
     protected function clearUrlToUrlRedirectRelation(SpyUrlRedirect $urlRedirectEntity): SpyUrlRedirect
     {
         foreach ($urlRedirectEntity->getSpyUrls() as $urlEntity) {

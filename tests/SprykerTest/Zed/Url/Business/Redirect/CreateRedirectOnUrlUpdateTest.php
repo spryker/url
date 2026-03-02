@@ -33,9 +33,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
      */
     protected $urlFacade;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -43,9 +40,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         $this->urlFacade = new UrlFacade();
     }
 
-    /**
-     * @return void
-     */
     public function testModifyingUrlCreatesRedirectToOldUrl(): void
     {
         $urlTransfer = $this->prepareTestData();
@@ -56,9 +50,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         $this->assertUrlRedirectCreated($urlTransfer, $updatedUrlTransfer);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function prepareTestData(): UrlTransfer
     {
         $localeEntity = $this->createLocaleEntity();
@@ -68,9 +59,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         return $urlTransfer;
     }
 
-    /**
-     * @return \Orm\Zed\Locale\Persistence\SpyLocale
-     */
     protected function createLocaleEntity(): SpyLocale
     {
         $localeEntity = new SpyLocale();
@@ -81,12 +69,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         return $localeEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Locale\Persistence\SpyLocale $localeEntity
-     * @param string $url
-     *
-     * @return \Orm\Zed\Url\Persistence\SpyUrl
-     */
     protected function createUrlEntity(SpyLocale $localeEntity, string $url): SpyUrl
     {
         $urlEntity = new SpyUrl();
@@ -98,11 +80,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         return $urlEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Url\Persistence\SpyUrl $urlEntity
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function mapEntityToTransfer(SpyUrl $urlEntity): UrlTransfer
     {
         $urlTransfer = new UrlTransfer();
@@ -111,12 +88,6 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         return $urlTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     * @param string $url
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function changeUrl(UrlTransfer $urlTransfer, string $url): UrlTransfer
     {
         $urlTransfer->setUrl($url);
@@ -124,24 +95,12 @@ class CreateRedirectOnUrlUpdateTest extends Unit
         return $this->urlFacade->updateUrl($urlTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     * @param \Generated\Shared\Transfer\UrlTransfer $updatedUrlTransfer
-     *
-     * @return void
-     */
     protected function assertUrlUpdated(UrlTransfer $urlTransfer, UrlTransfer $updatedUrlTransfer): void
     {
         $this->assertSame($urlTransfer->getIdUrl(), $updatedUrlTransfer->getIdUrl(), 'Ids of url should match after update.');
         $this->assertNotEquals($urlTransfer->getUrl(), $updatedUrlTransfer->getUrl(), 'Url should change after update.');
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     * @param \Generated\Shared\Transfer\UrlTransfer $updatedUrlTransfer
-     *
-     * @return void
-     */
     protected function assertUrlRedirectCreated(UrlTransfer $urlTransfer, UrlTransfer $updatedUrlTransfer): void
     {
         $urlEntity = SpyUrlQuery::create()

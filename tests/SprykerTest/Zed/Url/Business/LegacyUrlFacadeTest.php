@@ -49,9 +49,6 @@ class LegacyUrlFacadeTest extends Unit
      */
     protected $localeFacade;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -62,9 +59,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->touchQueryContainer = new TouchQueryContainer();
     }
 
-    /**
-     * @return void
-     */
     public function testCreateUrlInsertsAndReturnsSomething(): void
     {
         $urlQuery = $this->urlQueryContainer->queryUrls();
@@ -80,9 +74,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertNotNull($newUrl->getIdUrl());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveUrlInsertsAndReturnsSomethingOnCreate(): void
     {
         $urlQuery = $this->urlQueryContainer->queryUrls();
@@ -104,9 +95,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertNotNull($url->getIdUrl());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveUrlUpdatesSomething(): void
     {
         $url = new UrlTransfer();
@@ -130,9 +118,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertSame($redirect2->getIdUrlRedirect(), $urlQuery->findOne()->getResourceId());
     }
 
-    /**
-     * @return void
-     */
     public function testHasUrlId(): void
     {
         $locale = $this->localeFacade->createLocale('UNIXA');
@@ -143,9 +128,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertTrue($this->urlFacade->hasUrlId($idPageUrl));
     }
 
-    /**
-     * @return void
-     */
     public function testGetUrlByPath(): void
     {
         $locale = $this->localeFacade->createLocale('DFGHE');
@@ -160,9 +142,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertSame($locale->getIdLocale(), $url->getFkLocale());
     }
 
-    /**
-     * @return void
-     */
     public function testGetUrlById(): void
     {
         $locale = $this->localeFacade->createLocale('DFGHX');
@@ -177,9 +156,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertSame($locale->getIdLocale(), $url->getFkLocale());
     }
 
-    /**
-     * @return void
-     */
     public function testTouchUrlActive(): void
     {
         $locale = $this->localeFacade->createLocale('ABCDE');
@@ -198,9 +174,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertSame(1, $touchQuery->count());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateRedirectInsertsAndReturnsSomething(): void
     {
         $redirectQuery = $this->urlQueryContainer->queryRedirects();
@@ -214,9 +187,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertNotNull($newRedirect->getIdUrlRedirect());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveRedirectInsertsAndReturnsSomethingOnCreate(): void
     {
         $redirect = new RedirectTransfer();
@@ -234,9 +204,6 @@ class LegacyUrlFacadeTest extends Unit
         $this->assertNotNull($redirect->getIdUrlRedirect());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveRedirectUpdatesSomething(): void
     {
         $redirect = new RedirectTransfer();

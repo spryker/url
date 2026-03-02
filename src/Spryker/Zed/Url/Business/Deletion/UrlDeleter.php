@@ -37,11 +37,6 @@ class UrlDeleter extends AbstractUrlDeleterSubject implements UrlDeleterInterfac
      */
     protected $urlRedirectActivator;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     * @param \Spryker\Zed\Url\Business\Url\UrlActivatorInterface $urlActivator
-     * @param \Spryker\Zed\Url\Business\Redirect\UrlRedirectActivatorInterface $urlRedirectActivator
-     */
     public function __construct(
         UrlQueryContainerInterface $urlQueryContainer,
         UrlActivatorInterface $urlActivator,
@@ -76,11 +71,6 @@ class UrlDeleter extends AbstractUrlDeleterSubject implements UrlDeleterInterfac
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return void
-     */
     protected function executeDeleteUrlTransaction(UrlTransfer $urlTransfer): void
     {
         $urlEntity = $this->getUrlEntityToDelete($urlTransfer);
@@ -90,11 +80,6 @@ class UrlDeleter extends AbstractUrlDeleterSubject implements UrlDeleterInterfac
         $this->notifyAfterDeleteObservers($urlTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlRedirectTransfer $urlRedirectTransfer
-     *
-     * @return void
-     */
     protected function executeDeleteUrlRedirectTransaction(UrlRedirectTransfer $urlRedirectTransfer): void
     {
         $urlRedirectEntity = $this->getRedirectEntity($urlRedirectTransfer);

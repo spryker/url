@@ -18,9 +18,6 @@ class UrlRedirectValidator implements UrlRedirectValidatorInterface
      */
     protected $urlQueryContainer;
 
-    /**
-     * @param \Spryker\Zed\Url\Persistence\UrlQueryContainerInterface $urlQueryContainer
-     */
     public function __construct(UrlQueryContainerInterface $urlQueryContainer)
     {
         $this->urlQueryContainer = $urlQueryContainer;

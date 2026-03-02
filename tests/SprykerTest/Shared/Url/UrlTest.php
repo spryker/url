@@ -21,9 +21,6 @@ use Spryker\Service\UtilText\Model\Url\Url;
  */
 class UrlTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testUrlConstruct(): void
     {
         $url = new Url(['path' => '/foo/bar']);
@@ -31,9 +28,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testToString(): void
     {
         $url = new Url(['path' => '/foo/bar']);
@@ -41,9 +35,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar', (string)$url);
     }
 
-    /**
-     * @return void
-     */
     public function testToArray(): void
     {
         $url = new Url(['path' => '/foo/bar', 'query' => ['x' => 'y'], 'fragment' => 'z']);
@@ -62,9 +53,6 @@ class UrlTest extends Unit
         $this->assertSame($expected, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testBuild(): void
     {
         $url = new Url(['path' => '/foo/bar', 'query' => ['x' => 'y'], 'fragment' => 'z']);
@@ -72,9 +60,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar?x=y#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testBuildWithQueryAsString(): void
     {
         $url = new Url(['path' => '/foo/bar', 'query' => 'ö=ä', 'fragment' => 'z']);
@@ -82,9 +67,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar?%C3%B6=%C3%A4#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testBuildEscaped(): void
     {
         $url = new Url(['path' => '/foo/bar', 'query' => ['x' => 'y', 'ö' => 'ä'], 'fragment' => 'z']);
@@ -92,9 +74,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar?x=y&amp;%C3%B6=%C3%A4#z', $url->buildEscaped());
     }
 
-    /**
-     * @return void
-     */
     public function testParse(): void
     {
         $url = Url::parse('/foo/bar?q=a#z');
@@ -102,9 +81,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar?q=a#z', (string)$url);
     }
 
-    /**
-     * @return void
-     */
     public function testGetPathSegments(): void
     {
         $url = new Url(['path' => '/foo/bar/baz', 'query' => 'q=a', 'fragment' => 'x']);
@@ -112,9 +88,6 @@ class UrlTest extends Unit
         $this->assertSame(['foo', 'bar', 'baz'], $segments);
     }
 
-    /**
-     * @return void
-     */
     public function testNormalizePath(): void
     {
         $url = new Url(['path' => '/foo/bar/baz//abc/', 'query' => ['x' => 'y'], 'fragment' => 'z']);
@@ -122,9 +95,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar/baz/abc?x=y#z', $path);
     }
 
-    /**
-     * @return void
-     */
     public function testSetPathAsString(): void
     {
         $url = new Url(['path' => '/foo/bar/baz', 'query' => 'x=y', 'fragment' => 'z']);
@@ -132,9 +102,6 @@ class UrlTest extends Unit
         $this->assertSame('/e/f?x=y#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testSetPathAsArray(): void
     {
         $url = new Url(['path' => '/foo/bar/baz', 'query' => 'x=y', 'fragment' => 'z']);
@@ -142,9 +109,6 @@ class UrlTest extends Unit
         $this->assertSame('/e/f?x=y#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testAddPathAsString(): void
     {
         $url = new Url(['path' => '/foo/bar/baz', 'query' => 'x=y', 'fragment' => 'z']);
@@ -153,9 +117,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar/baz/e/f?x=y#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testAddPathAsArray(): void
     {
         $url = new Url(['path' => '/foo/bar/baz', 'query' => 'x=y', 'fragment' => 'z']);
@@ -164,9 +125,6 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar/baz/e/f?x=y#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testSetQuery(): void
     {
         $url = new Url(['path' => '/foo/bar/baz', 'query' => 'x=y', 'fragment' => 'z']);
@@ -175,18 +133,12 @@ class UrlTest extends Unit
         $this->assertSame('/foo/bar/baz?x=y&c=d&e=f#z', $url->build());
     }
 
-    /**
-     * @return void
-     */
     public function testEmpty(): void
     {
         $url = new Url();
         $this->assertSame('/', $url->build(), 'Empty URL object must return homepage');
     }
 
-    /**
-     * @return void
-     */
     public function testFull(): void
     {
         $url = new Url();

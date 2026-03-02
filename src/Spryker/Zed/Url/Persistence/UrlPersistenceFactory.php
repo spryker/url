@@ -39,17 +39,11 @@ class UrlPersistenceFactory extends AbstractPersistenceFactory
         return SpyUrlRedirectQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Persistence\Propel\Mapper\UrlMapper
-     */
     public function createUrlMapper(): UrlMapper
     {
         return new UrlMapper();
     }
 
-    /**
-     * @return \Orm\Zed\Url\Persistence\SpyUrl
-     */
     public function createSpyUrlEntity(): SpyUrl
     {
         return new SpyUrl();

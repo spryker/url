@@ -37,9 +37,6 @@ class RedirectOverwriteTest extends Unit
      */
     protected $urlFacade;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -47,9 +44,6 @@ class RedirectOverwriteTest extends Unit
         $this->urlFacade = new UrlFacade();
     }
 
-    /**
-     * @return void
-     */
     public function testOverwritingRedirectedUrlsWithNewNonRedirectUrlsShouldBePossible(): void
     {
         $localeTransfer = $this->createLocaleEntity();
@@ -60,9 +54,6 @@ class RedirectOverwriteTest extends Unit
         $this->assertNotNull($urlTransfer->getIdUrl(), 'New URL entity with previously redirected URL should have been created.');
     }
 
-    /**
-     * @return void
-     */
     public function testOverwritingRedirectedUrlsWithNewRedirectUrlsShouldNotBePossible(): void
     {
         $this->expectException(UrlExistsException::class);
@@ -71,9 +62,6 @@ class RedirectOverwriteTest extends Unit
         $this->urlFacade->createUrlRedirect($this->createUrlRedirectTransfer('/test/source/url', '/test/redirected/url2', $localeTransfer->getIdLocale()));
     }
 
-    /**
-     * @return void
-     */
     public function testOverwritingRedirectedUrlByUpdatingExistingNonRedirectUrlsShouldBePossible(): void
     {
         $localeTransfer = $this->createLocaleEntity();
@@ -89,9 +77,6 @@ class RedirectOverwriteTest extends Unit
         $this->assertSame($updateUrlTransfer->getUrl(), $urlTransfer->getUrl(), 'Updated URL entity with previously redirected URL should have been saved.');
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function createLocaleEntity(): LocaleTransfer
     {
         $localeEntity = new SpyLocale();
@@ -105,12 +90,6 @@ class RedirectOverwriteTest extends Unit
         return $localeTransfer;
     }
 
-    /**
-     * @param string $url
-     * @param int $idLocale
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function createUrlTransfer(string $url, int $idLocale): UrlTransfer
     {
         $urlTransfer = new UrlTransfer();
@@ -121,12 +100,6 @@ class RedirectOverwriteTest extends Unit
         return $urlTransfer;
     }
 
-    /**
-     * @param string $url
-     * @param int $idLocale
-     *
-     * @return \Orm\Zed\Url\Persistence\SpyUrl
-     */
     protected function createUrlEntity(string $url, int $idLocale): SpyUrl
     {
         $urlEntity = new SpyUrl();
@@ -138,13 +111,6 @@ class RedirectOverwriteTest extends Unit
         return $urlEntity;
     }
 
-    /**
-     * @param string $source
-     * @param string $target
-     * @param int $idLocale
-     *
-     * @return \Orm\Zed\Url\Persistence\SpyUrl
-     */
     protected function createUrlRedirectEntity(string $source, string $target, int $idLocale): SpyUrl
     {
         $redirectEntity = new SpyUrlRedirect();
@@ -162,11 +128,6 @@ class RedirectOverwriteTest extends Unit
         return $urlEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Url\Persistence\SpyUrl $urlEntity
-     *
-     * @return bool
-     */
     protected function hasUrlRedirect(SpyUrl $urlEntity): bool
     {
         $count = SpyUrlQuery::create()
@@ -179,13 +140,6 @@ class RedirectOverwriteTest extends Unit
         return $count > 0;
     }
 
-    /**
-     * @param string $sourceUrl
-     * @param string $targetUrl
-     * @param int $idLocale
-     *
-     * @return \Generated\Shared\Transfer\UrlRedirectTransfer
-     */
     protected function createUrlRedirectTransfer(string $sourceUrl, string $targetUrl, int $idLocale): UrlRedirectTransfer
     {
         $sourceUrlTransfer = new UrlTransfer();

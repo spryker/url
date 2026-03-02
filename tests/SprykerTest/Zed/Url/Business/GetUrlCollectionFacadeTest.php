@@ -32,17 +32,11 @@ class GetUrlCollectionFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
     public function testGetUrlCollectionFiltersUrlsByLocale(): void
     {
         // Arrange
@@ -63,9 +57,6 @@ class GetUrlCollectionFacadeTest extends Unit
         $this->assertSame($urlCollectionTransfer->getUrls()->offsetGet(0)->getFkLocale(), $urlTransfer->getFkLocale());
     }
 
-    /**
-     * @return void
-     */
     public function testGetUrlCollectionPaginatesUrls(): void
     {
         // Arrange
@@ -88,9 +79,6 @@ class GetUrlCollectionFacadeTest extends Unit
         $this->assertCount(2, $urlCollectionTransfer->getUrls());
     }
 
-    /**
-     * @return void
-     */
     public function testGetUrlCollectionSortsUrls(): void
     {
         // Arrange

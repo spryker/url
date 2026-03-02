@@ -12,10 +12,6 @@ use Spryker\Zed\Url\Business\BulkUpdater\UrlBulkUpdaterInterface;
 
 class UrlBulkSaver implements UrlBulkSaverInterface
 {
-    /**
-     * @param \Spryker\Zed\Url\Business\BulkCreator\UrlBulkCreatorInterface $urlBulkCreator
-     * @param \Spryker\Zed\Url\Business\BulkUpdater\UrlBulkUpdaterInterface $urlBulkUpdater
-     */
     public function __construct(
         protected UrlBulkCreatorInterface $urlBulkCreator,
         protected UrlBulkUpdaterInterface $urlBulkUpdater

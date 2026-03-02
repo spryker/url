@@ -170,9 +170,6 @@ class UrlBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Business\BulkSaver\UrlBulkSaverInterface
-     */
     public function createUrlBulkSaver(): UrlBulkSaverInterface
     {
         return new UrlBulkSaver(
@@ -181,9 +178,6 @@ class UrlBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Business\BulkCreator\UrlBulkCreatorInterface
-     */
     public function createUrlBulkCreator(): UrlBulkCreatorInterface
     {
         return new UrlBulkCreator(
@@ -193,9 +187,6 @@ class UrlBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Url\Business\BulkUpdater\UrlBulkUpdaterInterface
-     */
     public function createUrlBulkUpdater(): UrlBulkUpdaterInterface
     {
         return new UrlBulkUpdater(

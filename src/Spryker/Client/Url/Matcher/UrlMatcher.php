@@ -23,10 +23,6 @@ class UrlMatcher implements UrlMatcherInterface
      */
     protected $storageClient;
 
-    /**
-     * @param \Spryker\Shared\Url\KeyBuilder\UrlKeyBuilder $urlKeyBuilder
-     * @param \Spryker\Client\Url\Dependency\Client\UrlToStorageClientInterface $storageClient
-     */
     public function __construct(UrlKeyBuilder $urlKeyBuilder, UrlToStorageClientInterface $storageClient)
     {
         $this->urlKeyBuilder = $urlKeyBuilder;

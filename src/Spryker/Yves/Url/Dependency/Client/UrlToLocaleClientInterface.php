@@ -9,9 +9,6 @@ namespace Spryker\Yves\Url\Dependency\Client;
 
 interface UrlToLocaleClientInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentLanguage(): string;
 
     /**

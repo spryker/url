@@ -18,9 +18,6 @@ class UrlRedirectActivator implements UrlRedirectActivatorInterface
      */
     protected $touchFacade;
 
-    /**
-     * @param \Spryker\Zed\Url\Dependency\UrlToTouchInterface $touchFacade
-     */
     public function __construct(UrlToTouchInterface $touchFacade)
     {
         $this->touchFacade = $touchFacade;

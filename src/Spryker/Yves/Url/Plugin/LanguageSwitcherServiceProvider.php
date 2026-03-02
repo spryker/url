@@ -107,12 +107,6 @@ class LanguageSwitcherServiceProvider extends AbstractPlugin implements ServiceP
         return $languages;
     }
 
-    /**
-     * @param array $locales
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return array
-     */
     protected function attachLocaleUrlsToLanguages(array $locales, Request $request): array
     {
         $currentUrl = $request->getRequestUri();

@@ -49,12 +49,6 @@ class UrlBulkUpdater implements UrlBulkUpdaterInterface
         return $urlTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     * @param \Generated\Shared\Transfer\UrlTransfer $originalTransfer
-     *
-     * @return void
-     */
     protected function notifyUpdateBeforeSaveObservers(UrlTransfer $urlTransfer, UrlTransfer $originalTransfer): void
     {
         foreach ($this->updateBeforeSaveObservers as $observer) {
@@ -62,12 +56,6 @@ class UrlBulkUpdater implements UrlBulkUpdaterInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     * @param \Generated\Shared\Transfer\UrlTransfer $originalTransfer
-     *
-     * @return void
-     */
     protected function notifyUpdateAfterSaveObservers(UrlTransfer $urlTransfer, UrlTransfer $originalTransfer): void
     {
         foreach ($this->updateAfterSaveObservers as $observer) {

@@ -22,11 +22,6 @@ use Spryker\Zed\Url\Business\Exception\RedirectLoopException;
  */
 abstract class AbstractSpyUrlRedirect extends BaseSpyUrlRedirect
 {
-    /**
-     * @param \Propel\Runtime\Connection\ConnectionInterface|null $con
-     *
-     * @return bool
-     */
     public function preSave(?ConnectionInterface $con = null): bool
     {
         $result = parent::preSave($con);

@@ -12,9 +12,6 @@ use Spryker\Yves\Url\Dependency\Client\UrlToLocaleClientInterface;
 
 class UrlFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Yves\Url\Dependency\Client\UrlToLocaleClientInterface
-     */
     public function getLocaleClient(): UrlToLocaleClientInterface
     {
         return $this->getProvidedDependency(UrlDependencyProvider::CLIENT_LOCALE);

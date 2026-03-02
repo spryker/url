@@ -18,11 +18,6 @@ interface UrlReaderInterface
      */
     public function findUrl(UrlTransfer $urlTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer|null
-     */
     public function findUrlCaseInsensitive(UrlTransfer $urlTransfer): ?UrlTransfer;
 
     /**
@@ -32,11 +27,6 @@ interface UrlReaderInterface
      */
     public function hasUrl(UrlTransfer $urlTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlCaseInsensitive(UrlTransfer $urlTransfer): bool;
 
     /**
@@ -46,10 +36,5 @@ interface UrlReaderInterface
      */
     public function hasUrlOrRedirectedUrl(UrlTransfer $urlTransfer);
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlOrRedirectedUrlCaseInsensitive(UrlTransfer $urlTransfer): bool;
 }
