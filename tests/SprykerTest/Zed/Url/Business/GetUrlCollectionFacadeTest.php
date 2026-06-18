@@ -41,7 +41,11 @@ class GetUrlCollectionFacadeTest extends Unit
     {
         // Arrange
         $localeTransfer = $this->tester->haveLocale();
-        $urlTransfer = $this->tester->haveUrl([UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
+        $expectedUrl = '/url-collection-locale-filter-test-' . uniqid();
+        $this->tester->haveUrl([
+            UrlTransfer::URL => $expectedUrl,
+            UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale(),
+        ]);
 
         $urlCriteriaTransfer = (new UrlCriteriaTransfer())->setUrlConditions(
             (new UrlConditionsTransfer())
@@ -53,8 +57,17 @@ class GetUrlCollectionFacadeTest extends Unit
             ->getUrlCollection($urlCriteriaTransfer);
 
         // Assert
-        $this->assertCount(1, $urlCollectionTransfer->getUrls());
-        $this->assertSame($urlCollectionTransfer->getUrls()->offsetGet(0)->getFkLocale(), $urlTransfer->getFkLocale());
+        $foundUrls = [];
+        foreach ($urlCollectionTransfer->getUrls() as $foundUrlTransfer) {
+            // The locale filter must hold for every returned URL (a broken
+            // filter that ignored the locale condition would fail here).
+            $this->assertSame($localeTransfer->getIdLocale(), $foundUrlTransfer->getFkLocale());
+            $foundUrls[] = $foundUrlTransfer->getUrl();
+        }
+
+        // The specific URL we created for this locale is present, without
+        // assuming the locale has no other (seeded) URLs in the collection.
+        $this->assertContains($expectedUrl, $foundUrls);
     }
 
     public function testGetUrlCollectionPaginatesUrls(): void
