@@ -95,14 +95,20 @@ class GetUrlCollectionFacadeTest extends Unit
     public function testGetUrlCollectionSortsUrls(): void
     {
         // Arrange
+        // The URLs are given a run-unique prefix and the query is scoped to exactly those URLs, so the
+        // count and sort order are asserted only against the URLs this test creates - never against
+        // other URLs that may already exist for the (reused) locale in a seeded database.
         $localeTransfer = $this->tester->haveLocale();
-        $this->tester->haveUrl([UrlTransfer::URL => 'abc', UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
-        $this->tester->haveUrl([UrlTransfer::URL => 'bac', UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
-        $this->tester->haveUrl([UrlTransfer::URL => 'cab', UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
+        $urlPrefix = '/url-collection-sort-test-' . uniqid() . '-';
+        $this->tester->haveUrl([UrlTransfer::URL => $urlPrefix . 'abc', UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
+        $this->tester->haveUrl([UrlTransfer::URL => $urlPrefix . 'bac', UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
+        $this->tester->haveUrl([UrlTransfer::URL => $urlPrefix . 'cab', UrlTransfer::FK_LOCALE => $localeTransfer->getIdLocale()]);
 
         $urlCriteriaTransfer = (new UrlCriteriaTransfer())->setUrlConditions(
             (new UrlConditionsTransfer())
-                ->addIdLocale($localeTransfer->getIdLocale()),
+                ->addUrl($urlPrefix . 'abc')
+                ->addUrl($urlPrefix . 'bac')
+                ->addUrl($urlPrefix . 'cab'),
         )
             ->addSort(
                 (new SortTransfer())->setField(UrlTransfer::URL)
@@ -115,8 +121,8 @@ class GetUrlCollectionFacadeTest extends Unit
 
         // Assert
         $this->assertCount(3, $urlCollectionTransfer->getUrls());
-        $this->assertSame($urlCollectionTransfer->getUrls()->offsetGet(0)->getUrl(), 'cab');
-        $this->assertSame($urlCollectionTransfer->getUrls()->offsetGet(1)->getUrl(), 'bac');
-        $this->assertSame($urlCollectionTransfer->getUrls()->offsetGet(2)->getUrl(), 'abc');
+        $this->assertSame($urlPrefix . 'cab', $urlCollectionTransfer->getUrls()->offsetGet(0)->getUrl());
+        $this->assertSame($urlPrefix . 'bac', $urlCollectionTransfer->getUrls()->offsetGet(1)->getUrl());
+        $this->assertSame($urlPrefix . 'abc', $urlCollectionTransfer->getUrls()->offsetGet(2)->getUrl());
     }
 }
